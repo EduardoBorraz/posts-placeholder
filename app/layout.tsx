@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import 'material-icons/iconfont/material-icons.css'
 import ThemeRegistry from "@/app/theme/ThemeRegistry";
 
 export const metadata: Metadata = {
