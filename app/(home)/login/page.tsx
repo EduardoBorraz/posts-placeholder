@@ -17,10 +17,15 @@ export default function Login() {
             alt="noteplace"
             priority
           />
-          <Typography variant="h6" marginBottom={4} color={"primary"}>
+          <Typography
+            variant="h6"
+            marginBottom={4}
+            color={"primary"}
+            fontWeight={600}
+          >
             Hi, Welcome
           </Typography>
-          <Typography variant="caption" marginBottom={4}>
+          <Typography variant="body2" marginBottom={4}>
             Enter your credentials to continue.
           </Typography>
 

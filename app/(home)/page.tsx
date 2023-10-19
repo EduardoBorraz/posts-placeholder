@@ -18,7 +18,12 @@ export default function Home() {
             alt="noteplace"
             priority
           />
-          <Typography variant="h6" marginBottom={4}>
+          <Typography
+            variant="h6"
+            marginBottom={4}
+            color={"primary"}
+            fontWeight={600}
+          >
             ¡Welcome to PlacePost!
           </Typography>
           <Typography variant="caption" marginBottom={4}>
