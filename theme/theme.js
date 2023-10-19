@@ -17,7 +17,31 @@ const theme = createTheme({
   typography: {
     fontFamily: roboto.style.fontFamily,
   },
-  components: {},
+  components: {
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          borderRadius: "12px",
+        },
+      },
+    },
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "rgb(238, 242, 246)",
+          borderRadius: "12px",
+          width: "100%",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: "12px",
+        },
+      },
+    },
+  },
 });
 
 export default theme;

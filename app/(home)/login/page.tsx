@@ -1,7 +1,5 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Card, Typography, TextField } from "@mui/material";
 
-import Card from "@/components/Card/Card";
-import TextField from "@/components/TextField/TextField";
 import Image from "next/image";
 
 import notes_ico from "../../../public/notes_icon.svg";
@@ -10,7 +8,7 @@ import HomeStyles from "../../../app/(home)/page.module.css";
 export default function Login() {
   return (
     <Box className={HomeStyles.containerFlex}>
-      <Card>
+      <Card elevation={0} sx={{ minWidth: "475px" }}>
         <Box className={HomeStyles.cardContent}>
           <Image
             src={notes_ico}
@@ -19,7 +17,7 @@ export default function Login() {
             alt="noteplace"
             priority
           />
-          <Typography variant="h6" marginBottom={4}>
+          <Typography variant="h6" marginBottom={4} color={"primary"}>
             Hi, Welcome
           </Typography>
           <Typography variant="caption" marginBottom={4}>
@@ -27,7 +25,7 @@ export default function Login() {
           </Typography>
 
           <TextField label="Email" sx={{ mb: 2 }} />
-          <TextField label="Password" sx={{ mb: 2 }} />
+          <TextField label="Password" sx={{ mb: 4 }} />
 
           <Button variant="contained" sx={{ width: "100%" }}>
             Sig In

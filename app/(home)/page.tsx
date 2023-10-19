@@ -1,6 +1,5 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Card, Typography } from "@mui/material";
 
-import Card from "@/components/Card/Card";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,7 +9,7 @@ import HomeStyles from "../../app/(home)/page.module.css";
 export default function Home() {
   return (
     <Box className={HomeStyles.containerFlex}>
-      <Card>
+      <Card elevation={0}>
         <Box className={HomeStyles.cardContent}>
           <Image
             src={notes_ico}
