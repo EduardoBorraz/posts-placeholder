@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import 'material-icons/iconfont/material-icons.css'
-import ThemeRegistry from "@/app/theme/ThemeRegistry";
+import HomeStyles from "@/app/(home)/page.module.css";
+import "material-icons/iconfont/material-icons.css";
+import ThemeRegistry from "@/theme/ThemeRegistry";
+import "../../app/globals.css";
 
 export const metadata: Metadata = {
   title: "Posts-Placeholder",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>{children}</ThemeRegistry>
+        <ThemeRegistry>
+          <div className={HomeStyles.main}>{children}</div>
+        </ThemeRegistry>
       </body>
     </html>
   );
