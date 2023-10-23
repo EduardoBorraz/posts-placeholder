@@ -3,6 +3,7 @@ import HomeStyles from "@/app/(home)/page.module.css";
 import "material-icons/iconfont/material-icons.css";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import "../../app/globals.css";
+import { UserProvider } from "@/context/UserContext";
 
 export const metadata: Metadata = {
   title: "Posts-Placeholder",
@@ -18,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeRegistry>
-          <div className={HomeStyles.main}>{children}</div>
+          <UserProvider>
+            <div className={HomeStyles.main}>{children}</div>
+          </UserProvider>
         </ThemeRegistry>
       </body>
     </html>
