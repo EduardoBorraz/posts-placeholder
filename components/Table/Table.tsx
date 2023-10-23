@@ -5,9 +5,10 @@ import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import TableHead from "./TableHead";
 import TableBody from "./TableBody";
+import { Column } from "@/models/table.model";
 
 interface TableProps {
-  columns: string[];
+  columns: Column[];
   data: Record<string, any>[];
   //itemsPerPage: number;
 }

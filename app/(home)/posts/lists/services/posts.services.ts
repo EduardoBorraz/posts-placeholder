@@ -5,7 +5,7 @@ export const getPosts = async (): Promise<Posts[]> => {
   try {
     const url = `${process.env.API_URL}/posts`;
     const response = await axios.get(url);
-    if (response.statusText !== "OK") {
+    if (response.status !== 200) {
       throw new Error(`Error fetching posts`);
     }
     return response.data;
