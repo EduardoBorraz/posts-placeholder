@@ -44,12 +44,7 @@ export default function MenuAppBar() {
           >
             <AccountCircle />
           </IconButton>
-          <MenuInfo
-            anchorEl={anchorEl}
-            handleClose={handleClose}
-            handleLogout={() => {}}
-            handleProfile={() => {}}
-          />
+          <MenuInfo anchorEl={anchorEl} handleClose={handleClose} />
         </div>
       </Toolbar>
     </AppBar>

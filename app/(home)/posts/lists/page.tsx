@@ -3,7 +3,20 @@ import { useEffect, useState } from "react";
 import { useUser } from "@/context/UserContext";
 
 import Table from "@/components/Table/Table";
-import { Card, CardContent, Icon, IconButton } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Icon,
+  IconButton,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { getPosts } from "./services/posts.services";
 import { Posts } from "./models/posts.models";
 
@@ -13,7 +26,7 @@ export default function Lists() {
     { id: "id", label: "Id" },
     { id: "username", label: "User" },
     { id: "title", label: "Title" },
-    { id: "action", label: "Actions" },
+    { id: "action", label: "Action" },
   ];
   const { user } = useUser();
 
@@ -41,6 +54,49 @@ export default function Lists() {
   return (
     <Card elevation={0}>
       <CardContent>
+        <CardHeader
+          title={
+            <Typography variant="h6" fontWeight={600}>
+              Posts
+            </Typography>
+          }
+          /*  action={
+            <Button
+              startIcon={<Icon>add</Icon>}
+              variant="contained"
+              size="small"
+            >
+              New Post
+            </Button>
+          } */
+        />
+        <Divider sx={{ mb: 2 }} />
+        <Box marginBottom={4}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems={"center"}
+          >
+            <TextField
+              size="small"
+              sx={{ width: "15%" }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <Icon>search</Icon>
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button
+              variant="contained"
+              size="small"
+              startIcon={<Icon>add</Icon>}
+            >
+              New Post
+            </Button>
+          </Stack>
+        </Box>
         <Table data={posts} columns={columns} />
       </CardContent>
     </Card>

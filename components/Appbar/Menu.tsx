@@ -1,19 +1,25 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { removeStorage } from "@/utils/storage";
 
 interface Props {
   anchorEl: null | HTMLElement;
   handleClose: () => void;
-  handleProfile: () => void;
-  handleLogout: () => void;
 }
 
-export default function MenuInfo({
-  anchorEl,
-  handleClose,
-  handleProfile,
-  handleLogout,
-}: Props) {
+export default function MenuInfo({ anchorEl, handleClose }: Props) {
+  const router = useRouter();
+
+  const handleProfile = () => {};
+
+  const handleLogout = () => {
+    removeStorage("user");
+    router.push("/login");
+  };
+
   return (
     <Menu
       id="menu-appbar"

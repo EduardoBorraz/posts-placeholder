@@ -9,3 +9,7 @@ export const getStorage = <T>(key: string): T | null => {
   }
   return null;
 };
+
+export const removeStorage = (key: string): void => {
+  localStorage.removeItem(key);
+};
