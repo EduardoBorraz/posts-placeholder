@@ -4,6 +4,7 @@ import "material-icons/iconfont/material-icons.css";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import "../../app/globals.css";
 import { UserProvider } from "@/context/UserContext";
+import AuthGuard from "@/middleware/authMiddleware";
 
 export const metadata: Metadata = {
   title: "Posts-Placeholder",
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body>
         <ThemeRegistry>
           <UserProvider>
-            <div className={HomeStyles.main}>{children}</div>
+            <AuthGuard>
+              <div className={HomeStyles.main}>{children}</div>
+            </AuthGuard>
           </UserProvider>
         </ThemeRegistry>
       </body>

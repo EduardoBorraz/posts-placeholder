@@ -34,7 +34,7 @@ export default function Form() {
     }
 
     router.push("/posts/lists");
-    setStorage("user", response[0]);
+    setStorage("user", { ...response[0], authenticated: true });
   };
 
   return (
