@@ -19,8 +19,12 @@ import {
 } from "@mui/material";
 import { getPosts } from "./services/posts.services";
 import { Posts } from "./models/posts.models";
+import { useDrawer } from "@/hooks/useDrawer";
+import TemporaryDrawer from "@/components/Drawer/Drawer";
+import Form from "./components/Form";
 
 export default function Lists() {
+  const { state, toggleDrawer } = useDrawer({ right: true });
   const [posts, setPosts] = useState<Posts[]>([]);
   const columns = [
     { id: "id", label: "Id" },
@@ -31,8 +35,8 @@ export default function Lists() {
   const { user } = useUser();
 
   useEffect(() => {
-    if (user) {
-      const fetchGetPosts = async () => {
+    const fetchPosts = async () => {
+      if (user) {
         const posts = await getPosts(user.id);
         setPosts(
           posts.map((post) => ({
@@ -45,11 +49,13 @@ export default function Lists() {
             ),
           }))
         );
-      };
+      }
+    };
 
-      fetchGetPosts();
+    if (user) {
+      fetchPosts();
     }
-  }, []);
+  }, [user]);
 
   return (
     <Card elevation={0}>
@@ -60,15 +66,6 @@ export default function Lists() {
               Posts
             </Typography>
           }
-          /*  action={
-            <Button
-              startIcon={<Icon>add</Icon>}
-              variant="contained"
-              size="small"
-            >
-              New Post
-            </Button>
-          } */
         />
         <Divider sx={{ mb: 2 }} />
         <Box marginBottom={4}>
@@ -92,12 +89,14 @@ export default function Lists() {
               variant="contained"
               size="small"
               startIcon={<Icon>add</Icon>}
+              onClick={toggleDrawer("right", true)}
             >
               New Post
             </Button>
           </Stack>
         </Box>
         <Table data={posts} columns={columns} />
+        <Form state={state} toggleDrawer={toggleDrawer} />
       </CardContent>
     </Card>
   );

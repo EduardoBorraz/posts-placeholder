@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 
 import { User } from "@/models/user.model";
 import { getStorage } from "@/utils/storage";
@@ -19,7 +19,12 @@ export const useUser = (): UserContextType => {
 };
 
 export const UserProvider = ({ children }: Props) => {
-  const user: User | null = getStorage("user");
+  const [user, setUser] = React.useState<User | null>(null);
+
+  useEffect(() => {
+    const user: User | null = getStorage("user");
+    setUser(user);
+  }, []);
 
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
