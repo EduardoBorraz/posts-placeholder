@@ -32,12 +32,16 @@ export default function Form({ state, toggleDrawer, setPosts }: Props) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     reset,
+    watch,
   } = useForm<Posts>();
   const { user } = useUser();
 
   const [loading, setLoading] = useState<boolean>(false);
 
+  const titleValue = watch("title");
+  const bodyValue = watch("body");
   const onSubmit: SubmitHandler<Posts> = async (data) => {
     if (user && user.id) {
       setLoading(true);
@@ -67,17 +71,22 @@ export default function Form({ state, toggleDrawer, setPosts }: Props) {
           {...register("title", {
             required: true,
           })}
+          onChange={(e) => setValue("title", e.target.value)}
           error={errors.title && true}
           helperText={errors.title && "Title is required"}
           sx={{ marginBottom: 3 }}
+          autoFocus
         />
         <TextField
           label="Body"
           {...register("body", {
             required: true,
           })}
+          onChange={(e) => setValue("body", e.target.value)}
           error={errors.body && true}
           helperText={errors.body && "Body is required"}
+          multiline
+          maxRows={4}
           sx={{ marginBottom: 3 }}
         />
         <Stack direction={"row"} spacing={2} justifyContent={"flex-end"}>
@@ -99,11 +108,11 @@ export default function Form({ state, toggleDrawer, setPosts }: Props) {
 
         <Card elevation={0} sx={{ border: "1px solid #e0e0e0" }}>
           <CardContent>
-            <Typography variant="subtitle1" marginBottom={2}>
-              Title
+            <Typography variant="subtitle1" marginBottom={2} fontWeight={600}>
+              {titleValue ? titleValue : "Title"}
             </Typography>
             <Typography variant="body2" marginBottom={2}>
-              Body
+              {bodyValue ? bodyValue : "Body"}
             </Typography>
           </CardContent>
         </Card>
