@@ -20,16 +20,15 @@ import {
 import { getPosts } from "./services/posts.services";
 import { Posts } from "./models/posts.models";
 import { useDrawer } from "@/hooks/useDrawer";
-import TemporaryDrawer from "@/components/Drawer/Drawer";
 import Form from "./components/Form";
 
 export default function Lists() {
-  const { state, toggleDrawer } = useDrawer({ right: true });
+  const { state, toggleDrawer } = useDrawer({ right: false });
   const [posts, setPosts] = useState<Posts[]>([]);
   const columns = [
     { id: "id", label: "Id" },
-    { id: "username", label: "User" },
     { id: "title", label: "Title" },
+    { id: "body", label: "Body" },
     { id: "action", label: "Action" },
   ];
   const { user } = useUser();
@@ -96,7 +95,7 @@ export default function Lists() {
           </Stack>
         </Box>
         <Table data={posts} columns={columns} />
-        <Form state={state} toggleDrawer={toggleDrawer} />
+        <Form state={state} toggleDrawer={toggleDrawer} setPosts={setPosts} />
       </CardContent>
     </Card>
   );

@@ -25,7 +25,10 @@ export const createPost = async (
     if (response.status !== 201) {
       throw new Error(`Error creating post`);
     }
-    return response.data;
+    return {
+      data: response.data,
+      success: true,
+    };
   } catch (error) {
     throw new Error(`Error creating post: ${error}`);
   }
